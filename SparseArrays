@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        int arrCount=Convert.ToInt32(Console.ReadLine());
+        string [] data=new string[arrCount];
+        for(int i=0;i<arrCount;i++)
+            {
+            data[i]=Console.ReadLine();
+        }
+        int queryCount=Convert.ToInt32(Console.ReadLine());
+        string [] query=new string[queryCount];
+        int [] output=new int[queryCount];
+        Array.Clear(output,0,queryCount);
+        for(int i=0;i<queryCount;i++)
+            {
+            query[i]=Console.ReadLine();
+        }
+        for(int i=0;i<queryCount;i++)
+            {
+            for(int j=0;j<arrCount;j++)
+                {
+                if(data[j].Length!=query[i].Length)
+                    continue;
+                else
+                    {
+                    int flag=0;
+                    for(int k=0;k<data[j].Length;k++)
+                        {
+                        if(data[j][k]!=query[i][k])
+                           {flag=1;
+                            break;
+                           }
+                    }
+                        if(flag==0)
+                            output[i]=output[i]+1;
+                    
+                }
+            }
+        }
+        for(int i=0;i<queryCount;i++)
+            Console.WriteLine(output[i]);
+    }
+}
