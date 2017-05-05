@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        string [] count= Console.ReadLine().Split(' ');
+        int arrCount=Convert.ToInt32(count[0]);
+        int rotation=Convert.ToInt32(count[1]);
+        string [] arry=Console.ReadLine().Split(' ');
+        int [] arr=Array.ConvertAll(arry,Int32.Parse);
+        int [] temparr=new int[arrCount*2];
+        for(int i=0;i<2*arrCount;i++)
+            {
+            if(i<arrCount)
+                temparr[i]=arr[i];
+            else
+                temparr[i]=arr[i-arrCount];
+                
+            
+        }
+        for(int j=0;j<arrCount;j++)
+            {
+            Console.Write(temparr[rotation+j]+" ");
+        }
+            
+    }
+}
