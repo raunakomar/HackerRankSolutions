@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        string[] counters = Console.ReadLine().Split(' ');
+            int arraycounter = Convert.ToInt32(counters[0]);
+            int querycounter = Convert.ToInt32(counters[1]);
+            List<List<int>> seqlist = new List<List<int>>(arraycounter);
+            for (int i = 0; i < arraycounter; i++)
+            {
+                List<int> seq = new List<int>();
+                //for (int j = 0; j < arraycounter; j++)
+                  //  seq.Add(0);
+                seqlist.Add(seq);
+            }
+
+            int lastAns = 0;
+            for (int i = 0; i < querycounter; i++)
+            {
+                string[] query = Console.ReadLine().Split(' ');
+                int queryno = Convert.ToInt32(query[0]);
+                int first = Convert.ToInt32(query[1]);
+                int second = Convert.ToInt32(query[2]);
+                if (queryno == 1)
+                {
+                    int seq = ((first ^ lastAns) % arraycounter);
+                    //int index = (seqlist[seq].Count-1);
+                    seqlist[seq].Add(second);
+
+                }
+                else
+                {
+                    int seq = ((first ^ lastAns) % arraycounter);
+                    int size = (seqlist[seq].Count);
+                    int element = second % size;
+                    lastAns = seqlist[seq][element];
+                    Console.WriteLine(lastAns);
+                }
+            }
+       
+        //int [][] arr= new int [number][number];
+    }
+}
