@@ -1,0 +1,84 @@
+/*
+  Merge two linked lists 
+  head pointer input could be NULL as well for empty list
+  Node is defined as 
+  class Node {
+     int data;
+     Node next;
+  }
+*/
+
+Node MergeLists(Node headA, Node headB) {
+     // This is a "method-only" submission. 
+     // You only need to complete this method 
+     // This is a "method-only" submission. 
+            // You only need to complete this method 
+            Node nodeA = headA;
+            Node nodeB = headB;
+            Node nodeM = new Node();
+            Node nodeMH = new Node();
+            if (headA == null && headB != null) return headB;
+            else if (headB == null && headA != null) return headA;
+            else if (headA == null && headB == null) return headB;
+            else
+            {
+                if (headA.data > headB.data)
+                {
+                    nodeM = new Node();
+                    nodeM.data=headB.data;
+                    nodeB = headB.next;
+                    nodeMH = new Node();
+                    nodeMH=nodeM;
+                }
+                else
+                {
+                    nodeM = new Node();
+                    nodeM.data = headA.data;
+                    nodeA = headA.next;
+                    nodeMH = nodeM;
+
+                }
+                while (nodeA != null || nodeB != null)
+                {
+                    if (nodeA == null)
+                    {
+                        Node nodex = new Node();
+                        nodex.data = nodeB.data;
+                        nodeM.next = nodex;
+                        nodeM = nodex;
+                        nodeB = nodeB.next;
+                    }
+                    else if (nodeB == null)
+                    {
+                        Node nodex = new Node();
+                        nodex.data = nodeA.data;
+                        nodeM.next = nodex;
+                        nodeM = nodex;
+                        nodeA = nodeA.next;
+                    }
+                    else
+                    {
+                        if (nodeA.data > nodeB.data)
+                        {
+                            //nodeM = new Node();
+                            Node nodex = new Node();
+                            nodex.data = nodeB.data;
+                            nodeM.next = nodex;
+                            nodeM = nodex;
+                            nodeB = nodeB.next;
+                        }
+                        else
+                        {
+                            //nodeM = new Node();
+                            Node nodex = new Node();
+                            nodex.data = nodeA.data;
+                            nodeM.next = nodex;
+                            nodeM = nodex;
+                            nodeA = nodeA.next;
+                        }
+                    }
+                }
+                return nodeMH;
+            }
+
+}
